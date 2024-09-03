@@ -1,11 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 
 function PublishQuiz() {
+  const isMobile = useMediaQuery("(max-width:600px");
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -122,19 +125,26 @@ function PublishQuiz() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 270, right: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 270,
+              right: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -221,11 +231,11 @@ function PublishQuiz() {
       {/* main container */}
       <div
         style={{
-          width: "50%",
+          width: isMobile ? "100%" : "50%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
-          marginTop: "150px",
+          marginTop: isMobile ? "250px" : "150px",
         }}
       >
         <div
@@ -245,8 +255,10 @@ function PublishQuiz() {
                 return (
                   <div key={list._id}>
                     <div style={{ display: "flex", alignItems: "center" }}>
-                      <div style={{ width: "250px" }}>
-                        <h4 style={{ fontSize: "18px" }}>{list.name}</h4>
+                      <div style={{ width: isMobile ? "160px" : "250px" }}>
+                        <h4 style={{ fontSize: isMobile ? "16px" : "18px" }}>
+                          {list.name}
+                        </h4>
                       </div>
                       {list?.isPublished ? (
                         <div>
@@ -258,7 +270,7 @@ function PublishQuiz() {
                               backgroundColor: "gray",
                               color: "white",
                               padding: "5px",
-                              width: "75px",
+                              width: isMobile ? "70px" : "75px",
                               height: "30px",
                             }}
                           >
@@ -273,9 +285,9 @@ function PublishQuiz() {
                               backgroundColor: "gray",
                               color: "white",
                               padding: "5px",
-                              width: "75px",
+                              width: isMobile ? "55px" : "75px",
                               height: "30px",
-                              marginLeft: "20px",
+                              marginLeft: isMobile ? "10px" : "20px",
                             }}
                           >
                             Update
@@ -289,8 +301,8 @@ function PublishQuiz() {
                               backgroundColor: "gray",
                               color: "white",
                               padding: "5px",
-                              marginLeft: "20px",
-                              width: "75px",
+                              marginLeft: isMobile ? "10px" : "20px",
+                              width: isMobile ? "55px" : "75px",
                               height: "30px",
                             }}
                           >
@@ -310,7 +322,7 @@ function PublishQuiz() {
                               color: "white",
                               padding: "5px",
                               cursor: "pointer",
-                              width: "75px",
+                              width: isMobile ? "70px" : "75px",
                               height: "30px",
                             }}
                           >
@@ -326,8 +338,8 @@ function PublishQuiz() {
                               color: "white",
                               padding: "5px",
                               cursor: "pointer",
-                              marginLeft: "20px",
-                              width: "75px",
+                              marginLeft: isMobile ? "10px" : "20px",
+                              width: isMobile ? "55px" : "75px",
                               height: "30px",
                             }}
                           >
@@ -343,8 +355,8 @@ function PublishQuiz() {
                               color: "white",
                               padding: "5px",
                               cursor: "pointer",
-                              marginLeft: "20px",
-                              width: "75px",
+                              marginLeft: isMobile ? "10px" : "20px",
+                              width: isMobile ? "55px" : "75px",
                               height: "30px",
                             }}
                           >

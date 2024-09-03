@@ -1,11 +1,14 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 
 function Reports() {
+  const isMobile = useMediaQuery("(max-width:600px");
+
   const params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,19 +53,26 @@ function Reports() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 260, right: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 260,
+              right: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -149,7 +159,7 @@ function Reports() {
       {/* main container */}
       <div
         style={{
-          width: "30%",
+          width: isMobile ? "100%" : "30%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
@@ -157,7 +167,7 @@ function Reports() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "140px",
+          marginTop: isMobile ? "200px" : "140px",
         }}
       >
         <div>

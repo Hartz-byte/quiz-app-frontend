@@ -1,11 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 
 function QuizList() {
+  const isMobile = useMediaQuery("(max-width:600px");
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -60,19 +63,26 @@ function QuizList() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 260, right: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 260,
+              right: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -160,11 +170,11 @@ function QuizList() {
       {/* main container */}
       <div
         style={{
-          width: "50%",
+          width: isMobile ? "100%" : "50%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
-          marginTop: "80px",
+          marginTop: isMobile ? "250px" : "80px",
         }}
       >
         <div>
@@ -224,7 +234,7 @@ function QuizList() {
             {/* border */}
             <div
               style={{
-                width: "671px",
+                width: isMobile ? "90%" : "671px",
                 height: "2px",
                 backgroundColor: "white",
                 left: "27.9%",
@@ -283,7 +293,7 @@ function QuizList() {
                 backgroundColor: "gray",
                 borderRadius: "7px",
                 top: "40%",
-                left: "45%",
+                left: isMobile ? "30%" : "45%",
               }}
             >
               <div

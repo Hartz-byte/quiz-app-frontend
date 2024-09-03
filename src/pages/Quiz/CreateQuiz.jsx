@@ -2,12 +2,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 import Pic3 from "../../assets/3.png";
 
 function CreateQuiz() {
+  const isMobile = useMediaQuery("(max-width:600px");
+
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -389,25 +392,37 @@ function CreateQuiz() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 650, right: 30, width: "250px" }}
-        />
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 650,
+              right: 30,
+              width: "250px",
+            }}
+          />
 
-        <img
-          src={Pic3}
-          alt="pic1"
-          style={{ position: "absolute", top: 1100, left: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic3}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 1100,
+              left: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -490,10 +505,11 @@ function CreateQuiz() {
       {/* main container */}
       <div
         style={{
-          width: "50%",
+          width: isMobile ? "100%" : "50%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
+          marginTop: isMobile ? "250px" : "",
         }}
       >
         <div style={{ margin: "50px" }}>
@@ -519,7 +535,7 @@ function CreateQuiz() {
                 placeholder="Name of 10 characters long"
                 onChange={handleQuizNameChange}
                 style={{
-                  width: "300px",
+                  width: isMobile ? "90%" : "300px",
                   padding: "10px",
                   borderRadius: "5px",
                   marginBottom: "10px",
@@ -529,7 +545,7 @@ function CreateQuiz() {
               {/* border */}
               <div
                 style={{
-                  width: "671px",
+                  width: isMobile ? "50%" : "671px",
                   height: "1px",
                   backgroundColor: "white",
                   position: "absolute",
@@ -540,7 +556,12 @@ function CreateQuiz() {
 
               <h2 style={{ color: "#333652" }}>Details *</h2>
               <div
-                style={{ display: "flex", alignItems: "center", gap: "20px" }}
+                style={{
+                  display: "flex",
+                  flexDirection: isMobile ? "column" : "row",
+                  alignItems: "center",
+                  gap: "20px",
+                }}
               >
                 <div>
                   <h4 style={{ fontSize: "18px" }}>Category</h4>
@@ -580,7 +601,12 @@ function CreateQuiz() {
               </div>
 
               <div
-                style={{ display: "flex", alignItems: "center", gap: "20px" }}
+                style={{
+                  display: "flex",
+                  flexDirection: isMobile ? "column" : "row",
+                  alignItems: "center",
+                  gap: "20px",
+                }}
               >
                 <div>
                   <div>
@@ -629,7 +655,7 @@ function CreateQuiz() {
                   <select
                     onChange={handlePublicQuizChange}
                     style={{
-                      width: "222px",
+                      width: isMobile ? "250px" : "222px",
                       padding: "10px",
                       borderRadius: "5px",
                       marginBottom: "10px",
@@ -688,7 +714,7 @@ function CreateQuiz() {
                                   backgroundColor: "red",
                                   color: "white",
                                   padding: "5px",
-                                  marginLeft: "500px",
+                                  marginLeft: isMobile ? "150px" : "500px",
                                 }}
                                 onClick={handleRemoveUserClick}
                                 key={index}
@@ -706,7 +732,7 @@ function CreateQuiz() {
               {/* border */}
               <div
                 style={{
-                  width: "671px",
+                  width: isMobile ? "50%" : "671px",
                   height: "1px",
                   backgroundColor: "white",
                   position: "absolute",
@@ -729,7 +755,7 @@ function CreateQuiz() {
                 <h1
                   style={{
                     paddingTop: "20px",
-                    marginLeft: "210px",
+                    marginLeft: isMobile ? "20px" : "210px",
                     color: "white",
                     textDecoration: "underline",
                   }}
@@ -738,10 +764,6 @@ function CreateQuiz() {
                 </h1>
                 {questionList &&
                   questionList.map((list, index) => {
-                    // let length = questionList.length;
-                    // if (length === 1) {
-                    //   length = undefined;
-                    // }
                     return (
                       <div key={list.questionNumber}>
                         {list.questionNumber === 1 && (
@@ -761,7 +783,12 @@ function CreateQuiz() {
                         )}
 
                         <div>
-                          <h2 style={{ color: "#fca311", marginLeft: "220px" }}>
+                          <h2
+                            style={{
+                              color: "#fca311",
+                              marginLeft: isMobile ? "20px" : "220px",
+                            }}
+                          >
                             Question {index + 1}:
                           </h2>
                           <input
@@ -772,7 +799,7 @@ function CreateQuiz() {
                               handleQuestionChange(list.questionNumber, e)
                             }
                             style={{
-                              width: "300px",
+                              width: isMobile ? "170px" : "300px",
                               padding: "10px",
                               borderRadius: "5px",
                               marginBottom: "10px",
@@ -810,44 +837,46 @@ function CreateQuiz() {
                                   <div style={{ display: "flex", gap: "10px" }}>
                                     <p>{key}</p>
 
-                                    <input
-                                      type="text"
-                                      value={list.options[key]}
-                                      placeholder={`Enter option ${key}`}
-                                      id="options"
-                                      onChange={(e) =>
-                                        handleOptionsChange(
-                                          list.questionNumber,
-                                          key,
-                                          e
-                                        )
-                                      }
-                                      style={{
-                                        width: "300px",
-                                        padding: "10px",
-                                        borderRadius: "5px",
-                                        marginBottom: "10px",
-                                      }}
-                                    />
+                                    <div>
+                                      <input
+                                        type="text"
+                                        value={list.options[key]}
+                                        placeholder={`Enter option ${key}`}
+                                        id="options"
+                                        onChange={(e) =>
+                                          handleOptionsChange(
+                                            list.questionNumber,
+                                            key,
+                                            e
+                                          )
+                                        }
+                                        style={{
+                                          width: isMobile ? "150px" : "300px",
+                                          padding: "10px",
+                                          borderRadius: "5px",
+                                          marginBottom: "10px",
+                                        }}
+                                      />
 
-                                    <button
-                                      onClick={() =>
-                                        handleRemoveOptionClick(
-                                          list.questionNumber,
-                                          key
-                                        )
-                                      }
-                                      key="removeOption"
-                                      style={{
-                                        marginBottom: "10px",
-                                        borderRadius: "4px",
-                                        backgroundColor: "RED",
-                                        color: "white",
-                                        padding: "5px",
-                                      }}
-                                    >
-                                      Remove Option
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          handleRemoveOptionClick(
+                                            list.questionNumber,
+                                            key
+                                          )
+                                        }
+                                        key="removeOption"
+                                        style={{
+                                          marginBottom: "10px",
+                                          borderRadius: "4px",
+                                          backgroundColor: "RED",
+                                          color: "white",
+                                          padding: "5px",
+                                        }}
+                                      >
+                                        Remove Option
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               );
@@ -886,7 +915,7 @@ function CreateQuiz() {
                               backgroundColor: "red",
                               color: "white",
                               padding: "5px",
-                              marginLeft: "370px",
+                              marginLeft: isMobile ? "80px" : "370px",
                             }}
                           >
                             Remove Question
@@ -896,7 +925,7 @@ function CreateQuiz() {
                         {/* border */}
                         <div
                           style={{
-                            width: "500px",
+                            width: isMobile ? "80%" : "500px",
                             height: "5px",
                             backgroundColor: "white",
                             marginTop: "15px",
@@ -910,19 +939,7 @@ function CreateQuiz() {
               {/* border */}
               <div
                 style={{
-                  width: "671px",
-                  height: "1px",
-                  backgroundColor: "white",
-                  position: "absolute",
-                  left: "27.9%",
-                  marginTop: "10px",
-                }}
-              />
-
-              {/* border */}
-              <div
-                style={{
-                  width: "671px",
+                  width: isMobile ? "50%" : "671px",
                   height: "1px",
                   backgroundColor: "white",
                   position: "absolute",

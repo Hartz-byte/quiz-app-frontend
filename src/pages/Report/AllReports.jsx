@@ -1,12 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 import Pic3 from "../../assets/3.png";
 
 function AllReports() {
+  const isMobile = useMediaQuery("(max-width:600px");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -65,19 +67,26 @@ function AllReports() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 300, right: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 300,
+              right: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -164,10 +173,11 @@ function AllReports() {
       {/* main container */}
       <div
         style={{
-          width: "50%",
+          width: isMobile ? "100%" : "50%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
+          marginTop: isMobile ? "200px" : "",
         }}
       >
         <h1 style={{ textAlign: "center" }}>All Reports</h1>

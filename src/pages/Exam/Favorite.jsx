@@ -1,11 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useMediaQuery } from "@mui/material";
 
 import Pic1 from "../../assets/1.png";
 import Pic2 from "../../assets/2.png";
 
 function Favorite() {
+  const isMobile = useMediaQuery("(max-width:600px");
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -56,19 +59,26 @@ function Favorite() {
       }}
     >
       {/* images */}
-      <div>
-        <img
-          src={Pic1}
-          alt="pic1"
-          style={{ position: "absolute", top: 200, left: 30 }}
-        />
+      {!isMobile && (
+        <div>
+          <img
+            src={Pic1}
+            alt="pic1"
+            style={{ position: "absolute", top: 200, left: 30 }}
+          />
 
-        <img
-          src={Pic2}
-          alt="pic1"
-          style={{ position: "absolute", top: 260, right: 30, width: "250px" }}
-        />
-      </div>
+          <img
+            src={Pic2}
+            alt="pic1"
+            style={{
+              position: "absolute",
+              top: 260,
+              right: 30,
+              width: "250px",
+            }}
+          />
+        </div>
+      )}
 
       {/* side btns */}
       <div
@@ -156,7 +166,7 @@ function Favorite() {
       {/* main container */}
       <div
         style={{
-          width: "50%",
+          width: isMobile ? "100%" : "50%",
           height: "100%",
           backgroundColor: "#e0e1dd",
           borderRadius: "15px",
@@ -164,6 +174,7 @@ function Favorite() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: isMobile ? "250px" : "",
         }}
       >
         <h1 style={{ color: "#333652", textDecoration: "underline" }}>
@@ -177,7 +188,13 @@ function Favorite() {
               return (
                 <div key={list.question}>
                   <div>
-                    <div style={{ display: "flex", gap: 10 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                        justifyContent: isMobile ? "center" : "",
+                      }}
+                    >
                       <h2 style={{ color: "red" }}>Question {i + 1}:</h2>
                       <h2>{list.question}</h2>
                     </div>
@@ -191,6 +208,7 @@ function Favorite() {
                             key={key}
                             style={{
                               display: "flex",
+                              justifyContent: isMobile ? "center" : "",
                               gap: 10,
                               fontSize: "18px",
                             }}
@@ -214,7 +232,7 @@ function Favorite() {
                             color: "white",
                             padding: "5px",
                             cursor: "pointer",
-                            marginLeft: "80%",
+                            marginLeft: isMobile ? "60%" : "80%",
                           }}
                         >
                           Remove Favorite
@@ -224,7 +242,7 @@ function Favorite() {
                       {/* border */}
                       <div
                         style={{
-                          width: "600px",
+                          width: isMobile ? "300px" : "600px",
                           height: "2px",
                           backgroundColor: "white",
                           margin: "30px 0px",
