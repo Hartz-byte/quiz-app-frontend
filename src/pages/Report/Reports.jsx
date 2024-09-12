@@ -28,7 +28,9 @@ function Reports() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3002/report/${reportId}`, { headers })
+      .get(`https://quiz-backend-apjq.onrender.com/report/${reportId}`, {
+        headers,
+      })
       .then((response) => {
         setIsLoading(false);
         setReport(response?.data?.data);

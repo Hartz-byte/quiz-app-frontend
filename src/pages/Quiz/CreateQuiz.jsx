@@ -329,7 +329,7 @@ function CreateQuiz() {
   useEffect(() => {
     if (errors.length === 0) {
       axios
-        .post("http://localhost:3002/quiz", data, { headers })
+        .post("https://quiz-backend-apjq.onrender.com/quiz", data, { headers })
         .then((response) => {
           setIsLoading(false);
           setErrors(["Quiz created, redirecting..."]);
@@ -357,7 +357,7 @@ function CreateQuiz() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/user/allusers",
+          "https://quiz-backend-apjq.onrender.com/user/allusers",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

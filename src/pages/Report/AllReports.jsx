@@ -21,7 +21,7 @@ function AllReports() {
   useEffect(() => {
     if (!tempReports) {
       axios
-        .get(`http://localhost:3002/report`, { headers })
+        .get(`https://quiz-backend-apjq.onrender.com/report`, { headers })
         .then((response) => {
           setFlag(!flag);
           setTempReports(response?.data?.data);
@@ -36,7 +36,9 @@ function AllReports() {
 
       tempReports.map((report, index) => {
         axios
-          .get("http://localhost:3002/quiz/allpublishedquiz", { headers })
+          .get("https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz", {
+            headers,
+          })
           .then((response) => {
             // console.log(response?.data?.data[index].name);
 

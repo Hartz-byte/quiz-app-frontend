@@ -58,7 +58,9 @@ function Deactivate() {
     setIsLoading(true);
     const token = state.token;
     axios
-      .get(`http://localhost:3002/auth/resend-registration-otp/${token}`)
+      .get(
+        `https://quiz-backend-apjq.onrender.com/auth/resend-registration-otp/${token}`
+      )
       .then((response) => {
         setIsLoading(false);
       })
@@ -145,9 +147,12 @@ function Deactivate() {
       if (otpToNumber) {
         const token = state.token;
         axios
-          .post(`http://localhost:3002/auth/verify-registration-otp/${token}`, {
-            otp,
-          })
+          .post(
+            `https://quiz-backend-apjq.onrender.com/auth/verify-registration-otp/${token}`,
+            {
+              otp,
+            }
+          )
           .then((response) => {
             setIsLoading(false);
             setErrors((oldArray) => {

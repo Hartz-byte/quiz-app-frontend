@@ -54,7 +54,7 @@ const RegisterLogin = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/auth/",
+        "https://quiz-backend-apjq.onrender.com/auth/",
         registrationData
       );
 
@@ -86,7 +86,7 @@ const RegisterLogin = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/auth/login",
+        "https://quiz-backend-apjq.onrender.com/auth/login",
         loginData
       );
 

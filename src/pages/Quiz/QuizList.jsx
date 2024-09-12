@@ -29,7 +29,10 @@ function QuizList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/quiz/allpublishedquiz/exam", { headers })
+      .get(
+        "https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz/exam",
+        { headers }
+      )
       .then((response) => {
         setIsLoading(false);
         setQuizExam(response?.data?.data);
@@ -39,7 +42,10 @@ function QuizList() {
         navigate("/");
       });
     axios
-      .get("http://localhost:3002/quiz/allpublishedquiz/test", { headers })
+      .get(
+        "https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz/test",
+        { headers }
+      )
       .then((response) => {
         setIsLoading(false);
         setQuizTest(response?.data?.data);

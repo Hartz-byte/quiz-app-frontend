@@ -37,7 +37,7 @@ const VerifyAccount = () => {
 
       try {
         const response = await axios.post(
-          `http://localhost:3002/auth/verify-registration-otp/${token}`,
+          `https://quiz-backend-apjq.onrender.com/auth/verify-registration-otp/${token}`,
           { otp }
         );
 
@@ -56,7 +56,7 @@ const VerifyAccount = () => {
     const token = state.token;
     try {
       const response = await axios.get(
-        `http://localhost:3002/auth/resend-registration-otp/${token}`
+        `https://quiz-backend-apjq.onrender.com/auth/resend-registration-otp/${token}`
       );
 
       console.log("OTP resend successfully");

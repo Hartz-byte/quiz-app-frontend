@@ -71,7 +71,7 @@ function ExamPlay() {
       if (!result) {
         axios
           .post(
-            "http://localhost:3002/favquestion",
+            "https://quiz-backend-apjq.onrender.com/favquestion",
             { question: questionList.question, options: questionList.options },
             { headers }
           )
@@ -85,7 +85,9 @@ function ExamPlay() {
           });
       } else {
         axios
-          .delete(`http://localhost:3002/favquestion/${id}`, { headers })
+          .delete(`https://quiz-backend-apjq.onrender.com/favquestion/${id}`, {
+            headers,
+          })
           .then(() => {
             setIsLoading(false);
             setFlag(!flag);
@@ -98,7 +100,7 @@ function ExamPlay() {
     } else {
       axios
         .post(
-          "http://localhost:3002/favquestion",
+          "https://quiz-backend-apjq.onrender.com/favquestion",
           { question: questionList.question, options: questionList.options },
           { headers }
         )
@@ -117,7 +119,7 @@ function ExamPlay() {
     if (!!errors && errors.length === 0) {
       axios
         .post(
-          "http://localhost:3002/exam",
+          "https://quiz-backend-apjq.onrender.com/exam",
           { quizId: params?.id, attemptedQuestion },
           { headers }
         )
@@ -136,7 +138,9 @@ function ExamPlay() {
     }
     if (!!quizId) {
       axios
-        .get(`http://localhost:3002/exam/${quizId}`, { headers })
+        .get(`https://quiz-backend-apjq.onrender.com/exam/${quizId}`, {
+          headers,
+        })
         .then((response) => {
           setIsLoading(false);
           setQuizId("");
@@ -158,7 +162,7 @@ function ExamPlay() {
     }
 
     axios
-      .get("http://localhost:3002/favquestion", { headers })
+      .get("https://quiz-backend-apjq.onrender.com/favquestion", { headers })
       .then((response) => {
         setIsLoading(false);
         setFavQues(response?.data?.data?.favQues);
@@ -172,7 +176,9 @@ function ExamPlay() {
   useEffect(() => {
     if (!!quizId) {
       axios
-        .get(`http://localhost:3002/exam/${quizId}`, { headers })
+        .get(`https://quiz-backend-apjq.onrender.com/exam/${quizId}`, {
+          headers,
+        })
         .then((response) => {
           setIsLoading(false);
           setQuizId("");

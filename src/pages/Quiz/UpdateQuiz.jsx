@@ -322,7 +322,7 @@ function UpdateQuiz() {
   useEffect(() => {
     if (errors.length === 0) {
       axios
-        .put("http://localhost:3002/quiz", data, { headers })
+        .put("https://quiz-backend-apjq.onrender.com/quiz", data, { headers })
         .then((response) => {
           setIsLoading(false);
           setErrors(["Quiz updated, redirecting..."]);
@@ -347,7 +347,9 @@ function UpdateQuiz() {
     }
     if (!!quizId) {
       axios
-        .get(`http://localhost:3002/quiz/${quizId}`, { headers })
+        .get(`https://quiz-backend-apjq.onrender.com/quiz/${quizId}`, {
+          headers,
+        })
         .then((response) => {
           setQuizId("");
           setIsLoading(false);

@@ -22,7 +22,9 @@ function Favorite() {
   function handleRemoveFavouriteClick(id, e) {
     setIsLoading(true);
     axios
-      .delete(`http://localhost:3002/favquestion/${id}`, { headers })
+      .delete(`https://quiz-backend-apjq.onrender.com/favquestion/${id}`, {
+        headers,
+      })
       .then(() => {
         setIsLoading(false);
         setFlag(!flag);
@@ -35,7 +37,7 @@ function Favorite() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/favquestion", { headers })
+      .get("https://quiz-backend-apjq.onrender.com/favquestion", { headers })
       .then((response) => {
         setIsLoading(false);
         setFavQues(response?.data?.data?.favQues);

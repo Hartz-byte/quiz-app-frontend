@@ -44,7 +44,7 @@ function Profile() {
     evt.preventDefault();
     setIsLoading(true);
     axios
-      .patch("http://localhost:3002/user/deactivate", {}, { headers })
+      .patch("https://quiz-backend-apjq.onrender.com/user/deactivate", {}, { headers })
       .then((response) => {
         setIsLoading(false);
         navigate("/deactivate", { state: { token } });
@@ -68,7 +68,7 @@ function Profile() {
   useEffect(() => {
     if (!!token) {
       axios
-        .get("http://localhost:3002/user", { headers })
+        .get("https://quiz-backend-apjq.onrender.com/user", { headers })
         .then((response) => {
           setIsLoading(false);
           const data = response.data.data;

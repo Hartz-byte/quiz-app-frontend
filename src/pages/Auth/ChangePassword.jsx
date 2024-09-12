@@ -37,7 +37,11 @@ function ChangePassword() {
   function handleLogoutClick(evt) {
     setIsLoading(true);
     axios
-      .post("http://localhost:3002/user/logout", {}, { headers })
+      .post(
+        "https://quiz-backend-apjq.onrender.com/user/logout",
+        {},
+        { headers }
+      )
       .then((response) => {
         setIsLoading(false);
         navigate("/auth/login");
@@ -131,7 +135,7 @@ function ChangePassword() {
     if (errors.length === 0) {
       axios
         .put(
-          "http://localhost:3002/user/changepassword",
+          "https://quiz-backend-apjq.onrender.com/user/changepassword",
           { currentPassword, newPassword, confirmPassword },
           { headers }
         )

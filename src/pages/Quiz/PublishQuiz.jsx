@@ -42,7 +42,7 @@ function PublishQuiz() {
     e.preventDefault();
     setIsLoading(true);
     axios
-      .delete(`http://localhost:3002/quiz/${id}`, { headers })
+      .delete(`https://quiz-backend-apjq.onrender.com/quiz/${id}`, { headers })
       .then(() => {
         setFlag(!flag);
       })
@@ -56,7 +56,11 @@ function PublishQuiz() {
   useEffect(() => {
     if (!!quizId & publishFlag) {
       axios
-        .patch("http://localhost:3002/quiz/publish", { quizId }, { headers })
+        .patch(
+          "https://quiz-backend-apjq.onrender.com/quiz/publish",
+          { quizId },
+          { headers }
+        )
         .then((response) => {
           setQuizId("");
           setFlag(!flag);
@@ -68,7 +72,7 @@ function PublishQuiz() {
         });
     }
     axios
-      .get("http://localhost:3002/quiz", { headers })
+      .get("https://quiz-backend-apjq.onrender.com/quiz", { headers })
       .then((response) => {
         setIsLoading(false);
         setMyQuizList(response?.data?.data);
@@ -85,7 +89,9 @@ function PublishQuiz() {
   useEffect(() => {
     if (!!quizId & updateFlag) {
       axios
-        .get(`http://localhost:3002/quiz/${quizId}`, { headers })
+        .get(`https://quiz-backend-apjq.onrender.com/quiz/${quizId}`, {
+          headers,
+        })
         .then((response) => {
           setIsLoading(false);
           navigate("/updatequiz", { state: { token, quizId } });
@@ -98,7 +104,7 @@ function PublishQuiz() {
     }
 
     axios
-      .get("http://localhost:3002/quiz", { headers })
+      .get("https://quiz-backend-apjq.onrender.com/quiz", { headers })
       .then((response) => {
         setIsLoading(false);
         setMyQuizList(response?.data?.data);
