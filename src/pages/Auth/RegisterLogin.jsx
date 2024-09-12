@@ -54,7 +54,7 @@ const RegisterLogin = () => {
 
     try {
       const response = await axios.post(
-        "https://quiz-backend-apjq.onrender.com/auth/",
+        "https://quiz-backend-apjq.onrender.com/auth",
         registrationData
       );
 
