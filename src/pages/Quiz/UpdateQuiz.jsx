@@ -322,7 +322,7 @@ function UpdateQuiz() {
   useEffect(() => {
     if (errors.length === 0) {
       axios
-        .put("https://quiz-backend-apjq.onrender.com/quiz", data, { headers })
+        .put("https://quiz-backend-psi.vercel.app/quiz", data, { headers })
         .then((response) => {
           setIsLoading(false);
           setErrors(["Quiz updated, redirecting..."]);
@@ -347,7 +347,7 @@ function UpdateQuiz() {
     }
     if (!!quizId) {
       axios
-        .get(`https://quiz-backend-apjq.onrender.com/quiz/${quizId}`, {
+        .get(`https://quiz-backend-psi.vercel.app/quiz/${quizId}`, {
           headers,
         })
         .then((response) => {

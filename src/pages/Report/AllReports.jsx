@@ -21,7 +21,7 @@ function AllReports() {
   useEffect(() => {
     if (!tempReports) {
       axios
-        .get(`https://quiz-backend-apjq.onrender.com/report`, { headers })
+        .get(`https://quiz-backend-psi.vercel.app/report`, { headers })
         .then((response) => {
           setFlag(!flag);
           setTempReports(response?.data?.data);
@@ -36,7 +36,7 @@ function AllReports() {
 
       tempReports.map((report, index) => {
         axios
-          .get("https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz", {
+          .get("https://quiz-backend-psi.vercel.app/quiz/allpublishedquiz", {
             headers,
           })
           .then((response) => {

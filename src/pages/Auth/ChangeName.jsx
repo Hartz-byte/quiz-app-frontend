@@ -46,7 +46,7 @@ function ChangeName() {
   useEffect(() => {
     if (!!token) {
       axios
-        .get("https://quiz-backend-apjq.onrender.com/user", { headers })
+        .get("https://quiz-backend-psi.vercel.app/user", { headers })
         .then((response) => {
           setIsLoading(false);
           const data = response.data.data;
@@ -61,11 +61,7 @@ function ChangeName() {
     }
     if (!!errors && errors.length === 0 && name.length >= 1) {
       axios
-        .put(
-          "https://quiz-backend-apjq.onrender.com/user",
-          { name },
-          { headers }
-        )
+        .put("https://quiz-backend-psi.vercel.app/user", { name }, { headers })
         .then((response) => {
           setIsLoading(false);
           navigate("/profile", { state: { token } });

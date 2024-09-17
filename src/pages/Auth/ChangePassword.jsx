@@ -37,11 +37,7 @@ function ChangePassword() {
   function handleLogoutClick(evt) {
     setIsLoading(true);
     axios
-      .post(
-        "https://quiz-backend-apjq.onrender.com/user/logout",
-        {},
-        { headers }
-      )
+      .post("https://quiz-backend-psi.vercel.app/user/logout", {}, { headers })
       .then((response) => {
         setIsLoading(false);
         navigate("/auth/login");
@@ -135,7 +131,7 @@ function ChangePassword() {
     if (errors.length === 0) {
       axios
         .put(
-          "https://quiz-backend-apjq.onrender.com/user/changepassword",
+          "https://quiz-backend-psi.vercel.app/user/changepassword",
           { currentPassword, newPassword, confirmPassword },
           { headers }
         )

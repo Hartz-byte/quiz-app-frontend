@@ -54,8 +54,13 @@ const RegisterLogin = () => {
 
     try {
       const response = await axios.post(
-        "https://quiz-backend-apjq.onrender.com/auth/",
-        registrationData
+        "https://quiz-backend-psi.vercel.app/auth/",
+        registrationData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       setRegistrationData({
@@ -75,8 +80,12 @@ const RegisterLogin = () => {
 
       console.log("Registration successful");
     } catch (error) {
+      console.error(
+        "Registration failed:",
+        error.response?.data || error.message
+      );
       setError(error.message);
-      console.error("Registration failed:", error);
+      // console.error("Registration failed:", error);
     }
   };
 
@@ -86,7 +95,7 @@ const RegisterLogin = () => {
 
     try {
       const response = await axios.post(
-        "https://quiz-backend-apjq.onrender.com/auth/login",
+        "https://quiz-backend-psi.vercel.app/auth/login",
         loginData
       );
 

@@ -22,7 +22,7 @@ function Favorite() {
   function handleRemoveFavouriteClick(id, e) {
     setIsLoading(true);
     axios
-      .delete(`https://quiz-backend-apjq.onrender.com/favquestion/${id}`, {
+      .delete(`https://quiz-backend-psi.vercel.app/favquestion/${id}`, {
         headers,
       })
       .then(() => {
@@ -37,7 +37,7 @@ function Favorite() {
 
   useEffect(() => {
     axios
-      .get("https://quiz-backend-apjq.onrender.com/favquestion", { headers })
+      .get("https://quiz-backend-psi.vercel.app/favquestion", { headers })
       .then((response) => {
         setIsLoading(false);
         setFavQues(response?.data?.data?.favQues);

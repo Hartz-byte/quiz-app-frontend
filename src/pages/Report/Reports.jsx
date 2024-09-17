@@ -28,7 +28,7 @@ function Reports() {
 
   useEffect(() => {
     axios
-      .get(`https://quiz-backend-apjq.onrender.com/report/${reportId}`, {
+      .get(`https://quiz-backend-psi.vercel.app/report/${reportId}`, {
         headers,
       })
       .then((response) => {

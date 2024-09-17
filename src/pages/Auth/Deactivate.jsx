@@ -59,7 +59,7 @@ function Deactivate() {
     const token = state.token;
     axios
       .get(
-        `https://quiz-backend-apjq.onrender.com/auth/resend-registration-otp/${token}`
+        `https://quiz-backend-psi.vercel.app/auth/resend-registration-otp/${token}`
       )
       .then((response) => {
         setIsLoading(false);
@@ -148,7 +148,7 @@ function Deactivate() {
         const token = state.token;
         axios
           .post(
-            `https://quiz-backend-apjq.onrender.com/auth/verify-registration-otp/${token}`,
+            `https://quiz-backend-psi.vercel.app/auth/verify-registration-otp/${token}`,
             {
               otp,
             }

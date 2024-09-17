@@ -42,7 +42,7 @@ function PublishQuiz() {
     e.preventDefault();
     setIsLoading(true);
     axios
-      .delete(`https://quiz-backend-apjq.onrender.com/quiz/${id}`, { headers })
+      .delete(`https://quiz-backend-psi.vercel.app/quiz/${id}`, { headers })
       .then(() => {
         setFlag(!flag);
       })
@@ -57,7 +57,7 @@ function PublishQuiz() {
     if (!!quizId & publishFlag) {
       axios
         .patch(
-          "https://quiz-backend-apjq.onrender.com/quiz/publish",
+          "https://quiz-backend-psi.vercel.app/quiz/publish",
           { quizId },
           { headers }
         )
@@ -72,7 +72,7 @@ function PublishQuiz() {
         });
     }
     axios
-      .get("https://quiz-backend-apjq.onrender.com/quiz", { headers })
+      .get("https://quiz-backend-psi.vercel.app/quiz", { headers })
       .then((response) => {
         setIsLoading(false);
         setMyQuizList(response?.data?.data);
@@ -89,7 +89,7 @@ function PublishQuiz() {
   useEffect(() => {
     if (!!quizId & updateFlag) {
       axios
-        .get(`https://quiz-backend-apjq.onrender.com/quiz/${quizId}`, {
+        .get(`https://quiz-backend-psi.vercel.app/quiz/${quizId}`, {
           headers,
         })
         .then((response) => {
@@ -104,7 +104,7 @@ function PublishQuiz() {
     }
 
     axios
-      .get("https://quiz-backend-apjq.onrender.com/quiz", { headers })
+      .get("https://quiz-backend-psi.vercel.app/quiz", { headers })
       .then((response) => {
         setIsLoading(false);
         setMyQuizList(response?.data?.data);

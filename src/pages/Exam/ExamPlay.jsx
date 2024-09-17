@@ -71,7 +71,7 @@ function ExamPlay() {
       if (!result) {
         axios
           .post(
-            "https://quiz-backend-apjq.onrender.com/favquestion",
+            "https://quiz-backend-psi.vercel.app/favquestion",
             { question: questionList.question, options: questionList.options },
             { headers }
           )
@@ -85,7 +85,7 @@ function ExamPlay() {
           });
       } else {
         axios
-          .delete(`https://quiz-backend-apjq.onrender.com/favquestion/${id}`, {
+          .delete(`https://quiz-backend-psi.vercel.app/favquestion/${id}`, {
             headers,
           })
           .then(() => {
@@ -100,7 +100,7 @@ function ExamPlay() {
     } else {
       axios
         .post(
-          "https://quiz-backend-apjq.onrender.com/favquestion",
+          "https://quiz-backend-psi.vercel.app/favquestion",
           { question: questionList.question, options: questionList.options },
           { headers }
         )
@@ -119,7 +119,7 @@ function ExamPlay() {
     if (!!errors && errors.length === 0) {
       axios
         .post(
-          "https://quiz-backend-apjq.onrender.com/exam",
+          "https://quiz-backend-psi.vercel.app/exam",
           { quizId: params?.id, attemptedQuestion },
           { headers }
         )
@@ -138,7 +138,7 @@ function ExamPlay() {
     }
     if (!!quizId) {
       axios
-        .get(`https://quiz-backend-apjq.onrender.com/exam/${quizId}`, {
+        .get(`https://quiz-backend-psi.vercel.app/exam/${quizId}`, {
           headers,
         })
         .then((response) => {
@@ -162,7 +162,7 @@ function ExamPlay() {
     }
 
     axios
-      .get("https://quiz-backend-apjq.onrender.com/favquestion", { headers })
+      .get("https://quiz-backend-psi.vercel.app/favquestion", { headers })
       .then((response) => {
         setIsLoading(false);
         setFavQues(response?.data?.data?.favQues);
@@ -176,7 +176,7 @@ function ExamPlay() {
   useEffect(() => {
     if (!!quizId) {
       axios
-        .get(`https://quiz-backend-apjq.onrender.com/exam/${quizId}`, {
+        .get(`https://quiz-backend-psi.vercel.app/exam/${quizId}`, {
           headers,
         })
         .then((response) => {

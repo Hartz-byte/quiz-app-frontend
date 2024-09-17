@@ -44,7 +44,11 @@ function Profile() {
     evt.preventDefault();
     setIsLoading(true);
     axios
-      .patch("https://quiz-backend-apjq.onrender.com/user/deactivate", {}, { headers })
+      .patch(
+        "https://quiz-backend-psi.vercel.app/user/deactivate",
+        {},
+        { headers }
+      )
       .then((response) => {
         setIsLoading(false);
         navigate("/deactivate", { state: { token } });
@@ -68,7 +72,7 @@ function Profile() {
   useEffect(() => {
     if (!!token) {
       axios
-        .get("https://quiz-backend-apjq.onrender.com/user", { headers })
+        .get("https://quiz-backend-psi.vercel.app/user", { headers })
         .then((response) => {
           setIsLoading(false);
           const data = response.data.data;

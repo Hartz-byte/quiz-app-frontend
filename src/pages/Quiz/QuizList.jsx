@@ -29,10 +29,9 @@ function QuizList() {
 
   useEffect(() => {
     axios
-      .get(
-        "https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz/exam",
-        { headers }
-      )
+      .get("https://quiz-backend-psi.vercel.app/quiz/allpublishedquiz/exam", {
+        headers,
+      })
       .then((response) => {
         setIsLoading(false);
         setQuizExam(response?.data?.data);
@@ -42,10 +41,9 @@ function QuizList() {
         navigate("/");
       });
     axios
-      .get(
-        "https://quiz-backend-apjq.onrender.com/quiz/allpublishedquiz/test",
-        { headers }
-      )
+      .get("https://quiz-backend-psi.vercel.app/quiz/allpublishedquiz/test", {
+        headers,
+      })
       .then((response) => {
         setIsLoading(false);
         setQuizTest(response?.data?.data);
