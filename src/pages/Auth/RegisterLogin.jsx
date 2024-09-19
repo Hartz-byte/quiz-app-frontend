@@ -13,6 +13,7 @@ const RegisterLogin = () => {
 
   const [loginOpen, setLoginOpen] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [registrationData, setRegistrationData] = useState({
     name: "",
     email: "",
@@ -52,6 +53,8 @@ const RegisterLogin = () => {
   const handleRegistration = async (event) => {
     event.preventDefault();
 
+    setLoading(true);
+
     try {
       const response = await axios.post(
         "https://quiz-backend-psi.vercel.app/auth/",
@@ -71,6 +74,7 @@ const RegisterLogin = () => {
       });
 
       setError("");
+      setLoading(false);
 
       // console.log("token", response.data.data.token);
 
@@ -80,18 +84,20 @@ const RegisterLogin = () => {
 
       console.log("Registration successful");
     } catch (error) {
+      setLoading(false);
       console.error(
         "Registration failed:",
         error.response?.data || error.message
       );
       setError(error.message);
-      // console.error("Registration failed:", error);
     }
   };
 
   // handle login
   const handleLogin = async (event) => {
     event.preventDefault();
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -108,12 +114,14 @@ const RegisterLogin = () => {
         });
 
         setError("");
+        setLoading(false);
 
         console.log("Login successful");
 
         navigate("/quizlist", { state: { token } });
       }
     } catch (error) {
+      setLoading(false);
       setError(error.message);
       console.error("Login failed:", error);
     }
@@ -249,6 +257,8 @@ const RegisterLogin = () => {
               />
             </div>
 
+            {loading ? <h2>Loading...</h2> : null}
+
             {error ? (
               <div style={{ color: "red", marginTop: "10px" }}>{error}</div>
             ) : null}
@@ -324,6 +334,8 @@ const RegisterLogin = () => {
                 }}
               />
             </div>
+
+            {loading ? <h2>Loading...</h2> : null}
 
             {/* login button */}
             <button
