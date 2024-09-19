@@ -20,9 +20,9 @@ import AllReports from "../pages/Report/AllReports";
 const Navigation = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/registerlogin" />} />
+      {/* <Route path="/" element={<Navigate to="/registerlogin" />} /> */}
 
-      <Route path="/registerlogin" element={<RegisterLogin />} />
+      <Route path="/" element={<RegisterLogin />} />
       <Route path="/verifyaccount" element={<VerifyAccount />} />
       <Route path="/createquiz" element={<CreateQuiz />} />
       <Route path="/profile" element={<Profile />} />
