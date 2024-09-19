@@ -81,7 +81,7 @@ function ExamPlay() {
           })
           .catch(() => {
             setIsLoading(false);
-            navigate("/registerlogin");
+            navigate("/");
           });
       } else {
         axios
@@ -94,7 +94,7 @@ function ExamPlay() {
           })
           .catch(() => {
             setIsLoading(false);
-            navigate("/registerlogin");
+            navigate("/");
           });
       }
     } else {
@@ -110,7 +110,7 @@ function ExamPlay() {
         })
         .catch(() => {
           setIsLoading(false);
-          navigate("/registerlogin");
+          navigate("/");
         });
     }
   }
@@ -131,7 +131,7 @@ function ExamPlay() {
         })
         .catch((error) => {
           setIsLoading(false);
-          navigate("/registerlogin");
+          navigate("/");
         });
     } else {
       setIsLoading(false);
@@ -156,7 +156,7 @@ function ExamPlay() {
               state: { token, message: true },
             });
           } else {
-            navigate("/registerlogin");
+            navigate("/");
           }
         });
     }
@@ -169,7 +169,7 @@ function ExamPlay() {
       })
       .catch(() => {
         setIsLoading(false);
-        navigate("/registerlogin");
+        navigate("/");
       });
   }, [quizId, errors, flag]);
 
@@ -193,14 +193,14 @@ function ExamPlay() {
               state: { token, message: true },
             });
           } else {
-            navigate("/registerlogin");
+            navigate("/");
           }
         });
     }
   }, [quizId]);
 
   if (!token) {
-    return <Navigate to="/registerlogin" />;
+    return <Navigate to="/" />;
   }
 
   return (
