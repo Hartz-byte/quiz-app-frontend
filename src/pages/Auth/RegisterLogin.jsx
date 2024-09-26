@@ -13,6 +13,7 @@ const RegisterLogin = () => {
 
   const [loginOpen, setLoginOpen] = useState(false);
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [registrationData, setRegistrationData] = useState({
     name: "",
@@ -27,6 +28,7 @@ const RegisterLogin = () => {
 
   const handleLoginOpen = () => {
     setLoginOpen(!loginOpen);
+    setMessage("");
   };
 
   // handle registration text change
@@ -75,6 +77,7 @@ const RegisterLogin = () => {
 
       setError("");
       setLoading(false);
+      setMessage("");
 
       // console.log("token", response.data.data.token);
 
@@ -90,6 +93,7 @@ const RegisterLogin = () => {
         error.response?.data || error.message
       );
       setError(error.message);
+      setMessage("Registration failed. Check your credentials.");
     }
   };
 
@@ -115,6 +119,7 @@ const RegisterLogin = () => {
 
         setError("");
         setLoading(false);
+        setMessage("");
 
         console.log("Login successful");
 
@@ -123,6 +128,7 @@ const RegisterLogin = () => {
     } catch (error) {
       setLoading(false);
       setError(error.message);
+      setMessage("Login failed. Check your credentials.");
       console.error("Login failed:", error);
     }
   };
@@ -259,9 +265,9 @@ const RegisterLogin = () => {
 
             {loading ? <h2>Loading...</h2> : null}
 
-            {error ? (
-              <div style={{ color: "red", marginTop: "10px" }}>{error}</div>
-            ) : null}
+            {error && (
+              <div style={{ color: "red", marginTop: "10px" }}>{message}</div>
+            )}
 
             {/* submit button */}
             <button
@@ -336,6 +342,8 @@ const RegisterLogin = () => {
             </div>
 
             {loading ? <h2>Loading...</h2> : null}
+
+            {message !== "" && <p style={{ color: "red" }}>{message}</p>}
 
             {/* login button */}
             <button
